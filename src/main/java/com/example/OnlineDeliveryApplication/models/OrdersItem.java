@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class OrderItem {
+public class OrdersItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
