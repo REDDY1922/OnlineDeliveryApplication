@@ -20,7 +20,8 @@ public class Orders {
 	private String orderDate;
 	@ManyToOne
 	private Customer customer;
-	
+	@ManyToOne
+	private Product product;
 	
 	public String getStatus() {
 		return status;
@@ -46,6 +47,13 @@ public class Orders {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 	public int getId() {
 		return id;
 	}
@@ -54,9 +62,10 @@ public class Orders {
 	}
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", status=" + status + ", totalAmount=" + totalAmount + ", orderDate=" + orderDate
-				+ ", customer=" + customer + "]";
+		return "Orders [id=" + id + ", status=" + status + ", totalAmount=" + totalAmount + ", orderDate=" + orderDate
+				+ ", customer=" + customer + ", product=" + product + "]";
 	}
+	
 	
 	
 	
