@@ -16,23 +16,29 @@ public class Orders {
 	private int id;
 	
 	private String status;
-	private long totalAmount;
+	private double totalAmount;
 	private String orderDate;
+	private int quantity;
 	@ManyToOne
 	private Customer customer;
 	@ManyToOne
 	private Product product;
-	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public long getTotalAmount() {
+	public double getTotalAmount() {
 		return totalAmount;
 	}
-	public void setTotalAmount(long totalAmount) {
+	public void setTotalAmount(double totalAmount) {
 		this.totalAmount = totalAmount;
 	}
 	public String getOrderDate() {
@@ -41,34 +47,29 @@ public class Orders {
 	public void setOrderDate(String orderDate) {
 		this.orderDate = orderDate;
 	}
+	public int getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
 	public Customer getCustomer() {
 		return customer;
 	}
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	
 	public Product getProduct() {
 		return product;
 	}
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	@Override
 	public String toString() {
 		return "Orders [id=" + id + ", status=" + status + ", totalAmount=" + totalAmount + ", orderDate=" + orderDate
-				+ ", customer=" + customer + ", product=" + product + "]";
+				+ ", quantity=" + quantity + ", customer=" + customer + ", product=" + product + "]";
 	}
-	
-	
-	
-	
 	
 	
 }
