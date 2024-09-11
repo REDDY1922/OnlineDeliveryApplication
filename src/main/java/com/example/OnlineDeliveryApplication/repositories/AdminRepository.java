@@ -6,4 +6,6 @@ import com.example.OnlineDeliveryApplication.models.Admin;
 
 public interface AdminRepository extends JpaRepository<Admin, Integer>{
 
+	boolean existsByEmail(String email);
+
 }
