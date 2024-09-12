@@ -6,4 +6,6 @@ import com.example.OnlineDeliveryApplication.models.Vendor;
 
 public interface VendorRepository extends JpaRepository<Vendor, Integer>{
 
+	boolean findByEmail(String email);
+
 }

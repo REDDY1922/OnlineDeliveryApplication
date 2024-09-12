@@ -14,14 +14,11 @@ public class Customer {
 	private String name;
 	private String email;
 	private String phone;
-	private String address;
+
 	@OneToOne
 	private User user;
-	@Override
-	public String toString() {
-		return "Customer [customerId=" + customerId + ", name=" + name + ", email=" + email + ", phone=" + phone
-				+ ", address=" + address + ", user=" + user + "]";
-	}
+	@OneToOne
+	private Address Address;
 	public int getCustomerId() {
 		return customerId;
 	}
@@ -46,17 +43,23 @@ public class Customer {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
 	public User getUser() {
 		return user;
 	}
 	public void setUser(User user) {
 		this.user = user;
 	}
+	public Address getAddress() {
+		return Address;
+	}
+	public void setAddress(Address address) {
+		Address = address;
+	}
+	@Override
+	public String toString() {
+		return "Customer [customerId=" + customerId + ", name=" + name + ", email=" + email + ", phone=" + phone
+				+ ", user=" + user + ", Address=" + Address + "]";
+	}
+	
 	
 }

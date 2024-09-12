@@ -6,4 +6,6 @@ import com.example.OnlineDeliveryApplication.models.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Integer>{
 
+	boolean findByEmail(String email);
+
 }

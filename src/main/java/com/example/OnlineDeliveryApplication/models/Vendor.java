@@ -14,9 +14,16 @@ public class Vendor {
 	private String name;
 	private String email;
 	private String phone;
-	private String address;
+	@OneToOne
+	private Address address;
 	@OneToOne
 	private User user;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -35,17 +42,11 @@ public class Vendor {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
 	}
 	public User getUser() {
 		return user;
@@ -58,8 +59,6 @@ public class Vendor {
 		return "Vendor [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", address=" + address
 				+ ", user=" + user + "]";
 	}
-	
-	
 	
 
 }

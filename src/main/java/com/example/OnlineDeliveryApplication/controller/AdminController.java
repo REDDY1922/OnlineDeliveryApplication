@@ -41,11 +41,11 @@ public class AdminController {
 		    user.setRole(RoleType.ADMIN);
 		    user = userService.insert(user);
 		    admin.setUser(user);
-		    
+		    //insert admin into database
 		    Admin insertAdmin=adminService.insert(admin);
 		    logger.info("Admin signed up: {}", insertAdmin.getName());
 
-		    // Return a success message along with the created executive
+		    // Return a success message along with the created Admin
 		    return ResponseEntity.status(HttpStatus.OK).body(insertAdmin);
 	}
 }
