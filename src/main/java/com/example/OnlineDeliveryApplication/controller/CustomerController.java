@@ -1,7 +1,5 @@
 package com.example.OnlineDeliveryApplication.controller;
 
-import javax.management.relation.Role;
-
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

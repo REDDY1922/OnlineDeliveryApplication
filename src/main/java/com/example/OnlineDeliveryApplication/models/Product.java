@@ -21,9 +21,9 @@ public class Product {
 	@Column(length = 2000)
 	private String productDescription;
 	private String colour;
-	private int size;
-	private long price;
-	private int stock;
+	private String size;
+	private String price;
+	private String stock;
 	@Enumerated(EnumType.STRING)
 	private Availability availability;
 	@ManyToOne
@@ -48,22 +48,22 @@ public class Product {
 	public void setColour(String colour) {
 		this.colour = colour;
 	}
-	public int getSize() {
+	
+	public String getSize() {
 		return size;
 	}
-	public void setSize(int size) {
+	public void setSize(String size) {
 		this.size = size;
 	}
-	public long getPrice() {
+	
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(long price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
-	public int getStock() {
-		return stock;
-	}
-	public void setStock(int stock) {
+	
+	public void setStock(String stock) {
 		this.stock = stock;
 	}
 	public Availability getAvailability() {
