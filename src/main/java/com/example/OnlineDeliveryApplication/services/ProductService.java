@@ -58,6 +58,13 @@ public class ProductService {
 		productRepository.delete(product);
 	}
 
+
+
+	public Optional<Product> getOne(int pid) {
+		// TODO Auto-generated method stub
+		return productRepository.findById(pid);
+	}
+
 	
 
 	

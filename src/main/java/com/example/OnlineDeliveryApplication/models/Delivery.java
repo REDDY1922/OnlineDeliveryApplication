@@ -1,7 +1,4 @@
 package com.example.OnlineDeliveryApplication.models;
-
-
-
 import com.example.OnlineDeliveryApplication.enums.Status;
 
 import jakarta.persistence.Entity;

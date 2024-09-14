@@ -1,5 +1,5 @@
 package com.example.OnlineDeliveryApplication.enums;
 
 public enum Status {
-	ORDERED,DELIVERED,PROCESSED,CANCELLED;
+	ORDERED,DELIVERED,PROCESSED,CANCELLED, PENDING;
 }
