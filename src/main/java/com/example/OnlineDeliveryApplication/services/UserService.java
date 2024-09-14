@@ -1,5 +1,6 @@
 package com.example.OnlineDeliveryApplication.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.OnlineDeliveryApplication.Exception.InvalidIdException;
 import com.example.OnlineDeliveryApplication.models.Customer;
+import com.example.OnlineDeliveryApplication.models.Orders;
 import com.example.OnlineDeliveryApplication.models.User;
 import com.example.OnlineDeliveryApplication.repositories.CustomerRepository;
 import com.example.OnlineDeliveryApplication.repositories.UserRepository;
@@ -59,5 +61,27 @@ public class UserService {
 	    message.setText(text);
 	    mailSender.send(message);
 	}
+
+
+    // Method to send email on order placement
+    public void sendEmailOnOrderPlaced(int customerId) throws InvalidIdException {
+        // Fetch customer details by ID
+        Customer customer = customerRepository.getCustomer(customerId);
+
+        if (customer == null) {
+            throw new InvalidIdException("Invalid customer ID: " + customerId);
+        }
+
+        // Prepare the email message
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo(customer.getEmail());
+        mailMessage.setSubject("Order Confirmation");
+        mailMessage.setText("Dear " + customer.getName() + ",\n\nYour order has been successfully placed!");
+
+        // Send the email
+        mailSender.send(mailMessage);
+    }
+
+	
 
 }

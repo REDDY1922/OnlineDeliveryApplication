@@ -22,7 +22,7 @@ public class Product {
 	private String productDescription;
 	private String colour;
 	private String size;
-	private String price;
+	private int price;
 	private String stock;
 	@Enumerated(EnumType.STRING)
 	private Availability availability;
@@ -56,13 +56,17 @@ public class Product {
 		this.size = size;
 	}
 	
-	public String getPrice() {
+	
+	
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
-	
+	public String getStock() {
+		return stock;
+	}
 	public void setStock(String stock) {
 		this.stock = stock;
 	}

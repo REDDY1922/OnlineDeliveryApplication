@@ -57,22 +57,7 @@ public class ProductController {
 		return ResponseEntity.ok().body(product);
 	}	
 	}
-	@GetMapping("/category/all/{cid}")
-	public ResponseEntity<?> getProductsByCategory(@PathVariable int cid ,
-			@RequestParam(required = false,defaultValue = "0") Integer page,
-			@RequestParam(required = false,defaultValue = "1000000") Integer size) {
-		/* validate category id. */
-		try {
-			Category category= categoryService.getCategory(cid);
-			/* fetch products by category id with pagination */
-			Pageable pageable=(Pageable) PageRequest.of(page, size);
-			List<Product> list = productService.getProductsByCategoryId(cid,pageable);
-			return ResponseEntity.ok().body(list);
-		} catch (InvalidIdException e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
-		
-	}
+	
 	
 	@GetMapping("getall/{page}/{size}")
 	public List<Product> getAllProducts(
@@ -118,17 +103,7 @@ public class ProductController {
 			}
 			
 	    }
-	 @DeleteMapping("/delete/{productId}/{vendorId}")
-	 public ResponseEntity<?>deleteVendorProduct(@PathVariable int productId, @PathVariable int vendorId){
-		 try {
-			 productService.deleteProductByProductIdAndVendorID(productId,vendorId);
-			 
-		 }catch (Exception e){
-			 return ResponseEntity.badRequest().body(e.getMessage());
-			 
-		 }
-		 return ResponseEntity.ok().body("order deleted sucessfully");
-	 }
+	
 	 
 	 
 }

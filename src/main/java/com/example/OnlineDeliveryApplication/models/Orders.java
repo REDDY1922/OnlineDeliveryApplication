@@ -70,6 +70,10 @@ public class Orders {
 		return "Orders [id=" + id + ", status=" + status + ", totalAmount=" + totalAmount + ", orderDate=" + orderDate
 				+ ", quantity=" + quantity + ", customer=" + customer + ", product=" + product + "]";
 	}
+	public void add(Orders orders) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

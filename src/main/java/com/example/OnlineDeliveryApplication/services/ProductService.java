@@ -22,11 +22,7 @@ public class ProductService {
 		return productRepository.save(product);
 	}
 
-	public List<Product> getProductsByCategoryId(int cid, Pageable pageable) {
-		// TODO Auto-generated method stub
-		List<Product> product=productRepository.getproductsByCategoryId(cid,pageable);
-		return product;
-	}
+	
 
 	public List<Product> getAllProducts(Pageable pageable) {
 		// TODO Auto-generated method stub
@@ -62,16 +58,7 @@ public class ProductService {
 		productRepository.delete(product);
 	}
 
-	public boolean deleteProductByProductIdAndVendorID(int productId, int vendorId) {
-		// TODO Auto-generated method stub
-		int isSuccess = productRepository.deleteProductByProductIdAndAndVendor_VendorId(productId, vendorId);
-		System.out.println("Is Product Deleted Successfully " + isSuccess);
-		if(isSuccess == 0){
-			return false;
-		}else{
-			return true;
-		}
-	}
+	
 
 	
 

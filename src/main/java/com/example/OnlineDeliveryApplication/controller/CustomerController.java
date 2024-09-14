@@ -1,11 +1,18 @@
 package com.example.OnlineDeliveryApplication.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -60,5 +67,56 @@ public class CustomerController {
 		}
 	    return ResponseEntity.ok().body(customer);
 	}
-	
+	 @GetMapping("/all")
+		public List<Customer> getAllCustomers() { 
+			List<Customer> list = customerService.getAllCustomers();
+			return list;
+		}
+	 @GetMapping("/getByUserId/{userId}")
+		public ResponseEntity<?> getCustomerByUserId(@PathVariable("userId") int userId) {
+			try {
+				Optional<Customer> customer = customerService.getCustomerByUserId(userId);
+				if(customer.isPresent()){
+					return ResponseEntity.ok().body(customer);
+				}else{
+					return null;
+				}
+			} catch (Exception e) {
+				return ResponseEntity.badRequest().body(e.getMessage());
+			}
+		}
+	 @DeleteMapping("/delete/{id}") /* 8045/customer/delete/{id} */
+		public ResponseEntity<?> deleteCustomer(@PathVariable("id") int id) {
+
+			try {
+				// validate id
+				Customer customer = customerService.getCustomer(id);
+				// delete
+				customerService.deleteCustomer(customer);
+				return ResponseEntity.ok().body(" Account deleted successfully");
+			} catch (InvalidIdException e) {
+				return ResponseEntity.badRequest().body(e.getMessage());
+			}
+		}
+
+		@PutMapping("/customer/update/{id}")
+		public ResponseEntity<?> updateCustomer(@PathVariable("id") int id, @RequestBody Customer newCustomer) 
+				throws InvalidIdException {
+			Customer oldCustomer = customerService.getCustomer(id);
+			if (newCustomer.getName() != null)
+				oldCustomer.setName(newCustomer.getName());
+			if (newCustomer.getEmail() != null)
+				oldCustomer.setEmail(newCustomer.getEmail());
+			if(newCustomer.getPhone()!=null)
+				oldCustomer.setPhone(newCustomer.getPhone());
+			oldCustomer = customerService.insert(oldCustomer);
+			return ResponseEntity.ok().body(oldCustomer);
+		}
+		
+		@GetMapping("/products/{vid}")
+		public ResponseEntity<?> getCustomerByVendor(@PathVariable ("vid") int vid){
+			List<Customer> customers = customerService.getCustomerByVendor(vid);
+			return ResponseEntity.ok().body(customers);
+		}
+
 }

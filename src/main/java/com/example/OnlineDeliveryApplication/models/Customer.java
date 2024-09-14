@@ -1,5 +1,7 @@
 package com.example.OnlineDeliveryApplication.models;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -60,6 +62,4 @@ public class Customer {
 		return "Customer [customerId=" + customerId + ", name=" + name + ", email=" + email + ", phone=" + phone
 				+ ", user=" + user + ", Address=" + Address + "]";
 	}
-	
-	
 }
